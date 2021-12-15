@@ -25,17 +25,15 @@ module.exports = class ProblemSolver {
 		this.height = this.paper.length
 		for (let [index, instruction] of this.instructions.entries()) {
 			this.paper = this.foldPaper(instruction.axis, instruction.index)
-			if (index === 0) {
-				this.answer = this.getAnswer()
-			}
 		}
+		this.getAnswer()
   	}
 
 	getAnswer(): number {
 		const foldedPaperRegion = this.filterDots(this.dots, 0, this.width, 0, this.height)
-
+		const mergedPaper = this.createPaper(foldedPaperRegion).map(row => row.join(''))
+		console.log(mergedPaper)
 		const uniqueDots = new Set(foldedPaperRegion.map(point => JSON.stringify(point)))
-		console.log(uniqueDots)
 		return uniqueDots.size
 	}
 
