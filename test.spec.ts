@@ -17,12 +17,17 @@ describe('ProblemSolver', function() {
 			lines = data.split(/\r?\n/).map(line => line.trim());
 			done()
 		})
+  	});
 	
-  });
-	
-	it('reads input and number of paths', function(done) {
+	it('read input', function(done) {
 		problemSolver = new ProblemSolver(lines);
-		assert.equal(problemSolver.answer, 10)
+		assert.equal(problemSolver.instructions.length, 2)
+		done()
+	})
+
+	it('solved problem', function(done) {
+		problemSolver = new ProblemSolver(lines);
+		assert.equal(problemSolver.answer, 17)
 		done()
 	})
 });
